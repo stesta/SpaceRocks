@@ -1,0 +1,28 @@
+[gd_scene load_steps=5 format=3 uid="uid://lhd3h3ub2km0"]
+
+[ext_resource type="Texture2D" uid="uid://cwpld4q2u6ksn" path="res://assets/sprites/trace_01.png" id="1_f2lxj"]
+[ext_resource type="Script" path="res://scenes/weapons/single_laser.gd" id="1_r7ayb"]
+[ext_resource type="AudioStream" uid="uid://bqpjhpx5to8ld" path="res://assets/audio/sfx/laserSmall_004.ogg" id="3_syaoq"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_nuupq"]
+size = Vector2(45, 4)
+
+[node name="SingleLaser" type="Area2D"]
+collision_layer = 4
+collision_mask = 2
+script = ExtResource("1_r7ayb")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+rotation = 1.5708
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("1_f2lxj")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(17.5, 0)
+shape = SubResource("RectangleShape2D_nuupq")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_syaoq")
+autoplay = true
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

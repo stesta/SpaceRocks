@@ -1,0 +1,40 @@
+[gd_scene load_steps=4 format=3 uid="uid://cpib7ljp4vodp"]
+
+[ext_resource type="Script" path="res://main.gd" id="1_g8gsr"]
+[ext_resource type="PackedScene" uid="uid://dp5a0y2212vky" path="res://scenes/rocks/big_rock.tscn" id="2_pdjuj"]
+[ext_resource type="PackedScene" uid="uid://c7q5qf3lwq6p3" path="res://scenes/player/player.tscn" id="3_rudxu"]
+
+[node name="Game" type="Node2D"]
+script = ExtResource("1_g8gsr")
+
+[node name="Rocks" type="Node" parent="."]
+
+[node name="BigRock" parent="Rocks" instance=ExtResource("2_pdjuj")]
+position = Vector2(221, 176)
+
+[node name="BigRock2" parent="Rocks" instance=ExtResource("2_pdjuj")]
+position = Vector2(529, 135)
+
+[node name="BigRock3" parent="Rocks" instance=ExtResource("2_pdjuj")]
+position = Vector2(852, 244)
+
+[node name="BigRock4" parent="Rocks" instance=ExtResource("2_pdjuj")]
+position = Vector2(132, 365)
+
+[node name="BigRock5" parent="Rocks" instance=ExtResource("2_pdjuj")]
+position = Vector2(281, 687)
+
+[node name="BigRock6" parent="Rocks" instance=ExtResource("2_pdjuj")]
+position = Vector2(642, 677)
+
+[node name="Projectiles" type="Node" parent="."]
+
+[node name="Player" parent="." instance=ExtResource("3_rudxu")]
+position = Vector2(477, 405)
+
+[node name="Score" type="Label" parent="."]
+offset_right = 40.0
+offset_bottom = 23.0
+
+[connection signal="body_entered" from="Player" to="." method="_on_player_body_entered"]
+[connection signal="player_destroyed" from="Player" to="." method="_on_player_player_destroyed"]

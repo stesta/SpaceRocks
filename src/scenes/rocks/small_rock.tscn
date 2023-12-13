@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=3 uid="uid://dhvojvujwyo1q"]
+
+[ext_resource type="Script" path="res://scenes/rocks/rock.gd" id="1_76ewo"]
+[ext_resource type="Texture2D" uid="uid://bre5dmqg3y5bh" path="res://assets/sprites/meteor_small.png" id="1_d2n2o"]
+[ext_resource type="PackedScene" uid="uid://bmc806d2dyfum" path="res://scenes/explosions/small_rock_explosion.tscn" id="2_stpgn"]
+
+[node name="SmallRock" type="RigidBody2D"]
+collision_layer = 2
+collision_mask = 5
+linear_velocity = Vector2(100, 0)
+script = ExtResource("1_76ewo")
+points = 25
+rock_type = 1
+explosion_scene = ExtResource("2_stpgn")
+margin = 50
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+polygon = PackedVector2Array(-32, 0, -24, -24, 0, -32, 24, -24, 32, 0, 24, 24, 0, 32, -24, 24)
+
+[node name="Rock" type="Sprite2D" parent="."]
+texture = ExtResource("1_d2n2o")

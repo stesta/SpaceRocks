@@ -1,0 +1,27 @@
+[gd_scene load_steps=3 format=3 uid="uid://blr6ba2gyt01g"]
+
+[ext_resource type="Script" path="res://scenes/explosions/one_shot_autostart.gd" id="1_16e1p"]
+[ext_resource type="AudioStream" uid="uid://qapvwcivf13b" path="res://assets/audio/sfx/lowFrequency_explosion_000.ogg" id="2_afk3c"]
+
+[node name="CPUParticles2D" type="CPUParticles2D"]
+emitting = false
+amount = 20
+one_shot = true
+explosiveness = 0.85
+emission_shape = 1
+emission_sphere_radius = 1.0
+spread = 180.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 1000.0
+initial_velocity_max = 1000.0
+scale_amount_min = 10.0
+scale_amount_max = 10.0
+hue_variation_min = -1.0
+hue_variation_max = 1.0
+script = ExtResource("1_16e1p")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("2_afk3c")
+volume_db = 10.0
+pitch_scale = 3.0
+autoplay = true

@@ -1,0 +1,29 @@
+[gd_scene load_steps=6 format=3 uid="uid://bmc806d2dyfum"]
+
+[ext_resource type="Texture2D" uid="uid://dskoeuapi6sos" path="res://assets/particles/smoke/smoke_05.png" id="1_gcpqm"]
+[ext_resource type="Script" path="res://scenes/explosions/one_shot_autostart.gd" id="2_yoqt7"]
+[ext_resource type="AudioStream" uid="uid://cbs7we1qtjjgv" path="res://assets/audio/sfx/lowFrequency_explosion_001.ogg" id="3_1481r"]
+
+[sub_resource type="Curve" id="Curve_cnf2w"]
+_data = [Vector2(0.0393258, 0.626374), 0.0, 0.0, 0, 0, Vector2(0.97191, 0.681319), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Gradient" id="Gradient_gofnu"]
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
+
+[node name="CPUParticles2D" type="CPUParticles2D"]
+emitting = false
+amount = 1
+one_shot = true
+texture = ExtResource("1_gcpqm")
+gravity = Vector2(0, 0)
+scale_amount_min = 0.75
+scale_amount_max = 0.75
+scale_amount_curve = SubResource("Curve_cnf2w")
+color_ramp = SubResource("Gradient_gofnu")
+script = ExtResource("2_yoqt7")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_1481r")
+pitch_scale = 2.0
+autoplay = true

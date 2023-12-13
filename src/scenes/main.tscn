@@ -1,0 +1,55 @@
+[gd_scene load_steps=5 format=3 uid="uid://cpib7ljp4vodp"]
+
+[ext_resource type="Script" path="res://main.gd" id="1_g8gsr"]
+[ext_resource type="PackedScene" uid="uid://dp5a0y2212vky" path="res://scenes/rocks/big_rock.tscn" id="2_pdjuj"]
+[ext_resource type="PackedScene" uid="uid://dhvojvujwyo1q" path="res://scenes/rocks/small_rock.tscn" id="3_06beu"]
+[ext_resource type="PackedScene" uid="uid://c7q5qf3lwq6p3" path="res://scenes/player/player.tscn" id="3_rudxu"]
+
+[node name="Game" type="Node2D" node_paths=PackedStringArray("projectiles_node", "rocks_node", "player", "score", "restart_timer")]
+script = ExtResource("1_g8gsr")
+big_rock = ExtResource("2_pdjuj")
+small_rock = ExtResource("3_06beu")
+projectiles_node = NodePath("Projectiles")
+rocks_node = NodePath("Rocks")
+player = NodePath("Player")
+score = NodePath("Score")
+restart_timer = NodePath("RestartTimer")
+
+[node name="Rocks" type="Node" parent="."]
+
+[node name="BigRock" parent="Rocks" instance=ExtResource("2_pdjuj")]
+position = Vector2(221, 176)
+
+[node name="BigRock2" parent="Rocks" instance=ExtResource("2_pdjuj")]
+position = Vector2(529, 135)
+
+[node name="BigRock3" parent="Rocks" instance=ExtResource("2_pdjuj")]
+position = Vector2(852, 244)
+
+[node name="BigRock4" parent="Rocks" instance=ExtResource("2_pdjuj")]
+position = Vector2(132, 365)
+
+[node name="BigRock5" parent="Rocks" instance=ExtResource("2_pdjuj")]
+position = Vector2(281, 687)
+
+[node name="BigRock6" parent="Rocks" instance=ExtResource("2_pdjuj")]
+position = Vector2(642, 677)
+
+[node name="Projectiles" type="Node" parent="."]
+
+[node name="Player" parent="." instance=ExtResource("3_rudxu")]
+position = Vector2(477, 405)
+
+[node name="Score" type="Label" parent="."]
+offset_left = 10.0
+offset_top = 10.0
+offset_right = 71.0
+offset_bottom = 33.0
+text = "Score: 0"
+
+[node name="RestartTimer" type="Timer" parent="."]
+wait_time = 3.0
+
+[connection signal="body_entered" from="Player" to="." method="_on_player_body_entered"]
+[connection signal="player_destroyed" from="Player" to="." method="_on_player_player_destroyed"]
+[connection signal="timeout" from="RestartTimer" to="." method="_on_restart_timer_timeout"]
